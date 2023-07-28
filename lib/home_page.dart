@@ -1,37 +1,43 @@
 import 'package:flutter/material.dart';
 
-class HomeDemo extends StatelessWidget {
-  const HomeDemo({super.key});
+import 'Components/Form/ButtonTextType.dart';
+import 'common/CommonColors.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(left: 30, right: 30, top: 10),
-            child: Column(
-              children: [
-                Header(),
-                Label(),
-                Input()
-            ],
-          ),
-        ),
+    return Container(
+        decoration: const BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('public/images/register.png'), fit: BoxFit.cover),
       ),
+      child:const Scaffold(
+        backgroundColor: Colors.transparent,
+          body: SafeArea(
+            child: Stack(
+              children: [
+                Welcome(),
+                Navigation()
+              ],
+            ),
+          ),
+      )
     );
   }
 }
 
-class Header extends StatelessWidget {
-  const Header({super.key});
+class Welcome extends StatelessWidget {
+  const Welcome({super.key});
   @override
   Widget build(BuildContext context) {
     return const  Align(
-        alignment: Alignment.topCenter,
-        child: Text("Sahil learning the Flutter.",
+        alignment: Alignment.center,
+        child: Text("Welcome",
           style: TextStyle(
-            fontSize: 25,
-            color: Colors.blueAccent,
+            fontSize: 50,
+            color: white,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -39,34 +45,19 @@ class Header extends StatelessWidget {
   }
 }
 
-
-class Label extends StatelessWidget {
-  const Label({super.key});
+class Navigation extends StatelessWidget {
+  const Navigation({super.key});
   @override
   Widget build(BuildContext context) {
-    return const  Align(
-      alignment: Alignment.topLeft,
-      child: Text("Fullname",
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.blueAccent,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-    );
-  }
-}
-
-class Input extends StatelessWidget {
-  const Input({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return  Align(
-      alignment: Alignment.topLeft,
-      child: TextFormField(
-        decoration: const InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: 'Enter fullname',
+    return const Padding(padding: EdgeInsets.only(left: 25, right: 25, bottom: 15),
+      child: Align(
+      alignment: Alignment.bottomCenter ,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ButtonTextType(label: 'Sign In', size: 25, color: white, weight: FontWeight.w700, pageLink: 'login'),
+            ButtonTextType(label: 'Sign Up', size: 25, color: blue, weight: FontWeight.w700, pageLink: 'register'),
+          ],
         ),
       ),
     );
